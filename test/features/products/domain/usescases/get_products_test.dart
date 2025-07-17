@@ -1,13 +1,12 @@
+import 'package:dartz/dartz.dart';
+import 'package:ecommerce_app/core/errors/failures.dart';
 import 'package:ecommerce_app/core/usecases/usecase.dart';
+import 'package:ecommerce_app/features/products/domain/entities/product.dart';
+import 'package:ecommerce_app/features/products/domain/usecases/get_products.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:dartz/dartz.dart';
-import 'package:ecommerce_app/features/products/domain/usecases/get_products.dart';
-import 'package:ecommerce_app/features/products/domain/repositories/product_repository.dart';
-import 'package:ecommerce_app/features/products/domain/entities/product.dart';
-import 'package:ecommerce_app/core/errors/failures.dart';
 
-class MockProductRepository extends Mock implements ProductRepository {}
+import '../../helpers/mocks/product_repository_mock.dart';
 
 void main() {
   late GetProducts usecase;

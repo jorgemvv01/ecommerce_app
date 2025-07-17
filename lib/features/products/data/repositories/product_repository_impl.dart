@@ -21,6 +21,8 @@ class ProductRepositoryImpl implements ProductRepository {
       return const Left(
         ServerFailure()
       );
+    } on NetworkException {
+      return const Left(NetworkFailure());
     }
   }
 

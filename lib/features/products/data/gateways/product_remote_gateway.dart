@@ -16,7 +16,12 @@ class ProductRemoteGatewayImpl implements ProductRemoteGateway {
     final result = await apiClient.products.getProducts();
 
     return result.fold(
-      (failure) => throw ServerException(),
+      (failure) {
+        if (failure is NetworkFailure) {
+          throw NetworkException();
+        }
+        throw ServerException();
+      },
       (products) {
         return products
           .map((product) => ProductModel.fromJson(product.toJson()))

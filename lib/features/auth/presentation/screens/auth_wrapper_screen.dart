@@ -43,8 +43,7 @@ class AuthWrapperScreen extends ConsumerWidget {
         return const LoginScreen();
       case AuthStatus.initial:
       case AuthStatus.loading:
-      default:
-        return const Scaffold(
+      return const Scaffold(
           body: Center(
             child: CustomLoading(),
           ),
