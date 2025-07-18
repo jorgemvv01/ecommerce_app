@@ -1,13 +1,14 @@
 import 'package:dartz/dartz.dart';
 import 'package:ecommerce_app/core/errors/exceptions.dart';
 import 'package:ecommerce_app/core/errors/failures.dart';
+import 'package:ecommerce_app/features/products/data/gateways/product_remote_gateway.dart';
 import 'package:ecommerce_app/features/products/data/models/product_model.dart';
 import 'package:ecommerce_app/features/products/data/repositories/product_repository_impl.dart';
 import 'package:ecommerce_app/features/products/domain/entities/product.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
-import '../../helpers/mocks/product_remote_gateway_mock.dart';
+class MockProductRemoteGateway extends Mock implements ProductRemoteGateway {}
 
 void main() {
   late ProductRepositoryImpl repository;

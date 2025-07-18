@@ -27,10 +27,11 @@ class AuthState extends Equatable {
     User? user,
     String? errorMessage,
     bool clearError = false,
+    bool clearUser = false,
   }) {
     return AuthState(
       status: status ?? this.status,
-      user: user ?? this.user,
+      user: clearUser ? null : user ?? this.user,
       errorMessage: clearError ? null : errorMessage ?? this.errorMessage,
     );
   }
@@ -82,7 +83,7 @@ class AuthViewModel extends StateNotifier<AuthState> {
 
   Future<void> logout() async {
     await _logoutUser(NoParams());
-    state = state.copyWith(status: AuthStatus.unauthenticated, user: null);
+    state = state.copyWith(status: AuthStatus.unauthenticated, clearUser: true);
   }
 
   Future<void> register({

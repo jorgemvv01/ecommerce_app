@@ -63,6 +63,7 @@ void main() {
     username: 'testuser',
     firstName: 'John',
     lastName: 'Doe',
+    password: 'password'
   );
 
   group('login', () {
@@ -95,7 +96,7 @@ void main() {
   });
 
   group('register', () {
-    const tUserRequest = api_client.UserRequest(
+    final tUserRequest = api_client.UserRequest(
       email: tRegisterParams.email,
       username: tRegisterParams.username,
       password: tRegisterParams.password,
