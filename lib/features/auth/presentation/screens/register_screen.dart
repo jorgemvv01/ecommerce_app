@@ -14,7 +14,6 @@ class RegisterScreen extends ConsumerStatefulWidget {
 }
 
 class _RegisterScreenState extends ConsumerState<RegisterScreen> {
-  final _formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
   final _usernameController = TextEditingController();
   final _passwordController = TextEditingController();
@@ -28,13 +27,11 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
   }
 
   void _submitRegister() {
-    if (_formKey.currentState!.validate()) {
-      ref.read(authViewModelProvider.notifier).register(
-            email: _emailController.text,
-            username: _usernameController.text,
-            password: _passwordController.text,
-          );
-    }
+    ref.read(authViewModelProvider.notifier).register(
+      email: _emailController.text,
+      username: _usernameController.text,
+      password: _passwordController.text,
+    );
   }
 
   @override
@@ -58,39 +55,36 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
         Center(
           child: SingleChildScrollView(
             padding: const EdgeInsets.all(24.0),
-            child: Form(
-              key: _formKey,
-              child: isLoading
-              ? const Center(
-                  child: Column(
-                    children: [
-                      SizedBox(height: 200),
-                      CustomLoading(),
-                    ],
-                  )
+            child: isLoading
+            ? const Center(
+                child: Column(
+                  children: [
+                    SizedBox(height: 200),
+                    CustomLoading(),
+                  ],
                 )
-              : Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  VillaTextField(
-                    controller: _emailController,
-                    hintText: 'Email',
-                    keyboardType: TextInputType.emailAddress,
-                  ),
-                  const SizedBox(height: 16),
-                  VillaTextField(
-                    controller: _usernameController,
-                    hintText: 'Username',
-                  ),
-                  const SizedBox(height: 16),
-                  VillaTextField(
-                    controller: _passwordController,
-                    obscureText: true,
-                    hintText: 'Password',
-                  ),
-                  const SizedBox(height: 32),
-                ],
-              ),
+              )
+            : Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                VillaTextField(
+                  controller: _emailController,
+                  hintText: 'Email',
+                  keyboardType: TextInputType.emailAddress,
+                ),
+                const SizedBox(height: 16),
+                VillaTextField(
+                  controller: _usernameController,
+                  hintText: 'Username',
+                ),
+                const SizedBox(height: 16),
+                VillaTextField(
+                  controller: _passwordController,
+                  obscureText: true,
+                  hintText: 'Password',
+                ),
+                const SizedBox(height: 32),
+              ],
             ),
           ),
         )

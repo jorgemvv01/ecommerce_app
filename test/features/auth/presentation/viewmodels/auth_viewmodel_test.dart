@@ -100,6 +100,52 @@ void main() {
       expect(viewModel.state.errorMessage, 'Error');
     });
   });
+
+  group('Register', () {
+    setUp(() {
+      mockLoginUser = MockLoginUser();
+      mockRegisterUser = MockRegisterUser();
+      mockLogoutUser = MockLogoutUser();
+      mockCheckAuthStatus = MockCheckAuthStatus();
+      when(() => mockCheckAuthStatus(any())).thenAnswer((_) async => const Left(CacheFailure(message: 'No session')));
+      viewModel = AuthViewModel(mockLoginUser, mockLogoutUser, mockCheckAuthStatus, mockRegisterUser);
+    });
+
+    test('should emit [loading, authenticated] states when registration is successful', () async {
+      when(() => mockRegisterUser(any())).thenAnswer((_) async => const Right(tUser));
+
+      final future = viewModel.register(email: 'test@test.com', username: 'testuser', password: 'password');
+
+      expect(viewModel.state.status, AuthStatus.loading);
+
+      await future;
+
+      expect(viewModel.state.status, AuthStatus.authenticated);
+      expect(viewModel.state.user, tUser);
+      verify(() => mockRegisterUser(const RegisterParams(email: 'test@test.com', username: 'testuser', password: 'password'))).called(1);
+    });
+
+    test('should emit [loading, error] states when use case fails', () async {
+      when(() => mockRegisterUser(any())).thenAnswer((_) async => const Left(ServerFailure(message: 'User already exists')));
+
+      final future = viewModel.register(email: 'test@test.com', username: 'testuser', password: 'password');
+      expect(viewModel.state.status, AuthStatus.loading);
+      await future;
+
+      expect(viewModel.state.status, AuthStatus.error);
+      expect(viewModel.state.errorMessage, 'User already exists');
+    });
+
+    test('should emit error state and not call use case when validation fails', () async {
+      // Act: Llamamos al método. La transición de estado es síncrona.
+      await viewModel.register(email: '', username: 'testuser', password: 'password');
+
+      // Assert: Verificamos el estado final directamente.
+      expect(viewModel.state.status, AuthStatus.error);
+      expect(viewModel.state.errorMessage, contains('Email'));
+      verifyNever(() => mockRegisterUser(any()));
+    });
+  });
   
   group('Logout', () {
     setUp(() {

@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:ecommerce_app/core/errors/failures.dart';
-import 'package:ecommerce_app/features/cart/data/gateways/cart_remote_gateway.dart';
+import 'package:ecommerce_app/features/cart/data/gateways/cart_local_gateway.dart';
 import 'package:ecommerce_app/features/cart/domain/entities/cart_item.dart';
 import 'package:ecommerce_app/features/cart/domain/repositories/cart_repository.dart';
 import 'package:ecommerce_app/features/products/domain/entities/product.dart';

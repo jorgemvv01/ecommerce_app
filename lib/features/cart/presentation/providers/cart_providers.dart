@@ -1,4 +1,4 @@
-import 'package:ecommerce_app/features/cart/data/gateways/cart_remote_gateway.dart';
+import 'package:ecommerce_app/features/cart/data/gateways/cart_local_gateway.dart';
 import 'package:ecommerce_app/features/cart/data/repositories/cart_repository_impl.dart';
 import 'package:ecommerce_app/features/cart/domain/repositories/cart_repository.dart';
 import 'package:ecommerce_app/features/cart/domain/usescases/add_product_to_cart.dart';

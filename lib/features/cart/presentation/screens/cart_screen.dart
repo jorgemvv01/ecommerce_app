@@ -1,8 +1,7 @@
+import 'package:ecommerce_app/features/cart/presentation/providers/cart_providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:villa_design/villa_design.dart';
-
-import '../providers/cart_providers.dart';
 
 class CartScreen extends ConsumerWidget {
   const CartScreen({super.key});
