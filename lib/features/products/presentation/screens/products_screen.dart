@@ -142,11 +142,11 @@ class _ProductsScreenState extends ConsumerState<ProductsScreen> {
           children: [
             Text('Error: ${state.errorMessage}'),
             const SizedBox(height: 16),
-            ElevatedButton(
+            VillaElevatedButton(
               onPressed: () {
                 ref.read(productsViewModelProvider.notifier).loadProducts();
               },
-              child: const Text('Retry'),
+              text: 'Retry',
             )
           ],
         ),

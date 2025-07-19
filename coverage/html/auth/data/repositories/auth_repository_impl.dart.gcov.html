@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2025-07-18 20:12:08</td>
+            <td class="headerValue">2025-07-19 15:01:02</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">0</td>
@@ -104,10 +104,10 @@
 <a name="42"><span class="lineNum">      42 </span>            :       if (session != null) {</a>
 <a name="43"><span class="lineNum">      43 </span><span class="lineCov">          1 :         return Right(session.$1);</span></a>
 <a name="44"><span class="lineNum">      44 </span>            :       } else {</a>
-<a name="45"><span class="lineNum">      45 </span>            :         return const Left(CacheFailure(message: 'No hay sesión activa.'));</a>
+<a name="45"><span class="lineNum">      45 </span>            :         return const Left(CacheFailure(message: 'There is no active session'));</a>
 <a name="46"><span class="lineNum">      46 </span>            :       }</a>
 <a name="47"><span class="lineNum">      47 </span>            :     } catch (e) {</a>
-<a name="48"><span class="lineNum">      48 </span>            :       return const Left(CacheFailure(message: 'No se pudo leer la sesión.'));</a>
+<a name="48"><span class="lineNum">      48 </span>            :       return const Left(CacheFailure(message: 'The session could not be read'));</a>
 <a name="49"><span class="lineNum">      49 </span>            :     }</a>
 <a name="50"><span class="lineNum">      50 </span>            :   }</a>
 <a name="51"><span class="lineNum">      51 </span>            : </a>
@@ -117,7 +117,7 @@
 <a name="55"><span class="lineNum">      55 </span><span class="lineCov">          2 :       await localGateway.clearSession();</span></a>
 <a name="56"><span class="lineNum">      56 </span>            :       return const Right(null);</a>
 <a name="57"><span class="lineNum">      57 </span>            :     } catch (e) {</a>
-<a name="58"><span class="lineNum">      58 </span>            :       return const Left(CacheFailure(message: 'The session could not be closed.'));</a>
+<a name="58"><span class="lineNum">      58 </span>            :       return const Left(CacheFailure(message: 'The session could not be closed'));</a>
 <a name="59"><span class="lineNum">      59 </span>            :     }</a>
 <a name="60"><span class="lineNum">      60 </span>            :   }</a>
 <a name="61"><span class="lineNum">      61 </span>            : </a>
@@ -131,7 +131,7 @@
 <a name="69"><span class="lineNum">      69 </span><span class="lineCov">          1 :       return Right(newUser);</span></a>
 <a name="70"><span class="lineNum">      70 </span><span class="lineCov">          1 :     } on ServerException {</span></a>
 <a name="71"><span class="lineNum">      71 </span>            :       return const Left(</a>
-<a name="72"><span class="lineNum">      72 </span>            :         ServerFailure(message: &quot;Registration could not be completed. The user may already exist.&quot;)</a>
+<a name="72"><span class="lineNum">      72 </span>            :         ServerFailure(message: &quot;Registration could not be completed. The user may already exist&quot;)</a>
 <a name="73"><span class="lineNum">      73 </span>            :       );</a>
 <a name="74"><span class="lineNum">      74 </span>            :     }</a>
 <a name="75"><span class="lineNum">      75 </span>            :   }</a>

@@ -54,6 +54,8 @@ dev_dependencies:
     sdk: flutter
   mocktail: ^1.0.4
   network_image_mock: ^2.1.1
+  integration_test:
+    sdk: flutter
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is

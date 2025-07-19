@@ -41,16 +41,6 @@ class CartRepositoryImpl implements CartRepository {
   }
 
   @override
-  Future<Either<Failure, void>> removeProduct(int productId) async {
-    try {
-      await localGateway.removeProduct(productId);
-      return const Right(null);
-    } catch (e) {
-      return const Left(CacheFailure(message: "Product could not be removed"));
-    }
-  }
-
-  @override
   Future<Either<Failure, void>> clearCart() async {
     try {
       await localGateway.clear();

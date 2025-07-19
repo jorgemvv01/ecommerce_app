@@ -42,10 +42,10 @@ class AuthRepositoryImpl implements AuthRepository {
       if (session != null) {
         return Right(session.$1);
       } else {
-        return const Left(CacheFailure(message: 'No hay sesión activa.'));
+        return const Left(CacheFailure(message: 'There is no active session'));
       }
     } catch (e) {
-      return const Left(CacheFailure(message: 'No se pudo leer la sesión.'));
+      return const Left(CacheFailure(message: 'The session could not be read'));
     }
   }
 
@@ -55,7 +55,7 @@ class AuthRepositoryImpl implements AuthRepository {
       await localGateway.clearSession();
       return const Right(null);
     } catch (e) {
-      return const Left(CacheFailure(message: 'The session could not be closed.'));
+      return const Left(CacheFailure(message: 'The session could not be closed'));
     }
   }
 
@@ -69,7 +69,7 @@ class AuthRepositoryImpl implements AuthRepository {
       return Right(newUser);
     } on ServerException {
       return const Left(
-        ServerFailure(message: "Registration could not be completed. The user may already exist.")
+        ServerFailure(message: "Registration could not be completed. The user may already exist")
       );
     }
   }
