@@ -11,7 +11,6 @@ import 'package:ecommerce_app/features/cart/domain/entities/cart_item.dart';
 import 'package:ecommerce_app/features/products/domain/entities/product.dart';
 import 'package:ecommerce_app/core/usecases/usecase.dart';
 
-// Mocks
 class MockGetCartItems extends Mock implements GetCartItems {}
 class MockAddProductToCart extends Mock implements AddProductToCart {}
 class MockUpdateProductQuantity extends Mock implements UpdateProductQuantity {}
