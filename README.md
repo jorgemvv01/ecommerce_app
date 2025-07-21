@@ -111,4 +111,4 @@ genhtml coverage/lcov.info -ocoverage/html
 
 This diagram describes the navigation flow and main user interactions throughout the application.
 
-<img src="https://github.com/jorgemvv01/ecommerce_app/raw/main/resources/integration_test_coverage.jpg" alt="application flowchart" width="400"/>
+<img src="https://github.com/jorgemvv01/ecommerce_app/raw/main/resources/app-flow.jpg" alt="application flowchart" width="400"/>
