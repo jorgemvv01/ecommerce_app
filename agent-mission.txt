@@ -1,0 +1,19 @@
+Misión Principal: Realizar un flujo completo de compra, desde el inicio de sesión hasta la gestión del carrito y el cierre de sesión.
+
+Instrucciones paso a paso:
+1. Al iniciar la app, si aparece algún diálogo de permisos del sistema (como notificaciones), acéptalo.
+2. En la pantalla de Login, busca el campo de usuario y escribe exactamente: johnd
+3. Busca el campo de contraseña y escribe exactamente: m38rmF$
+4. Toca el botón de "Iniciar sesión" o "Login".
+5. Espera a que cargue la pantalla principal de productos (Products screen).
+6. Haz scroll hacia abajo en la lista o cuadrícula de productos para verificar que la navegación es fluida.
+7. Toca cualquier producto de la lista para entrar a su pantalla de detalles.
+8. Dentro de los detalles del producto, toca el botón "Añadir al carrito" (Add to cart).
+9. Toca el botón de retroceso (Atrás) para volver al catálogo principal.
+10. Toca el icono del carrito de compras, que debería estar en la barra superior.
+11. Dentro de la pantalla del carrito, busca el botón con el símbolo "+" y tócalo una vez para incrementar la cantidad del producto.
+12. Toca el botón de "Vaciar carrito" (Clear cart o Remove all) y confirma la acción si aparece un diálogo.
+13. Abre el menú principal (icono de tres puntos o hamburguesa) y selecciona la opción "Cerrar sesión" (Logout). Confirma si el sistema te lo pregunta.
+
+Criterios de éxito:
+La misión se considera un éxito absoluto si logras volver a la pantalla de Login inicial después de haber interactuado con el carrito, sin que la aplicación se congele o se cierre de forma inesperada.
