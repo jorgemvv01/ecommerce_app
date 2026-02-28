@@ -64,7 +64,7 @@ jobs:
       - name: Ejecutar App Testing Agent en Test Lab
         run: |
           gcloud beta firebase test android run \
-            --project tu-proyecto-id-12345 \
+            --project ecommerce-app-eb382 \
             --quiet \
             --type robo \
             --app build/app/outputs/apk/debug/app-debug.apk \
