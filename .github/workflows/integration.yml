@@ -1,0 +1,72 @@
+name: CI/CD - Flutter to Firebase AI Test Lab
+
+# 1. Se ejecuta al hacer un push a la rama master
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  # ==========================================
+  # FASE 1: PRUEBAS UNITARIAS (Fast Fail)
+  # ==========================================
+  unit-tests:
+    name: Pruebas Unitarias de Flutter
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar el código
+        uses: actions/checkout@v4
+
+      - name: Configurar Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+
+      - name: Instalar dependencias
+        run: flutter pub get
+
+      - name: Ejecutar pruebas unitarias
+        run: flutter test
+
+  # ==========================================
+  # FASE 2: BUILD Y TEST LAB CON IA
+  # ==========================================
+  ai-test-lab:
+    name: App Testing Agent en Firebase
+    needs: unit-tests # Solo se ejecuta si las unitarias pasan
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar el código
+        uses: actions/checkout@v4
+
+      - name: Configurar Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+
+      - name: Instalar dependencias
+        run: flutter pub get
+
+      # Construimos el APK de depuración (necesario para Test Lab)
+      - name: Construir APK para Test Lab
+        run: flutter build apk --debug
+
+      # Autenticación con Google Cloud (Firebase)
+      - name: Autenticar en Google Cloud
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_KEY }}'
+
+      - name: Configurar Google Cloud SDK
+        uses: google-github-actions/setup-gcloud@v2
+
+      # Lanzamos la prueba en Firebase Test Lab inyectando el prompt del Agente
+      - name: Ejecutar App Testing Agent en Test Lab
+        run: |
+          gcloud beta firebase test android run \
+            --type robo \
+            --app build/app/outputs/apk/debug/app-debug.apk \
+            --robo-script-prompt agent_mission.txt \
+            --device model=Pixel6,version=33 \
+            --device model=a10,version=28 \
+            --timeout 5m
