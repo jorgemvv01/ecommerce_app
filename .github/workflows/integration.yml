@@ -59,6 +59,8 @@ jobs:
 
       - name: Configurar Google Cloud SDK
         uses: google-github-actions/setup-gcloud@v2
+        with:
+          install_components: 'beta'
 
       # Lanzamos la prueba en Firebase Test Lab inyectando el prompt del Agente
       - name: Ejecutar App Testing Agent en Test Lab
